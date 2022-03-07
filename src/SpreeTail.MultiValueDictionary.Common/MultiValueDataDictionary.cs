@@ -102,10 +102,7 @@ namespace SpreeTail.MultiValueDictionary.Common
 
         public List<string> GetAllKeysAndValues()
         {
-            var result = new List<string>();
-            result.AddRange(GetAllKeys());
-            result.AddRange(GetAllMembers());
-            return result;
+            return dictionary.SelectMany(x => x.Value.Select(y => x.Key + ":" + y)).ToList();
         }
     }
 }
